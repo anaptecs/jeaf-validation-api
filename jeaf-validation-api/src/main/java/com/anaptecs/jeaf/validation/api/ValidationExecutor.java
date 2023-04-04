@@ -18,7 +18,8 @@ public interface ValidationExecutor {
    * aware that <code>pRequestParameters</code> might contain a mixture of different types including Java collections
    * classes, primitive arrays etc.
    */
-  void validateRequest( Class<?> pService, Object... pRequestParameters );
+  default void validateRequest( Class<?> pService, Object... pRequestParameters ) {
+  };
 
   /**
    * Method validates the passed response object. It is expected that implementations throws a runtime exception that
@@ -28,7 +29,8 @@ public interface ValidationExecutor {
    * must not be null.
    * @param pResponseObject Response object that should be validated. The parameter may be null.
    */
-  void validateResponse( Class<?> pService, Object pResponseObject );
+  default void validateResponse( Class<?> pService, Object pResponseObject ) {
+  };
 
   /**
    * Method validates the passed object. It is expected that implementations throws a runtime exception that describes
@@ -36,5 +38,6 @@ public interface ValidationExecutor {
    * 
    * @param pObject Object that should be validated. The parameter may be null.
    */
-  void validateObject( Object pObject );
+  default void validateObject( Object pObject ) {
+  };
 }

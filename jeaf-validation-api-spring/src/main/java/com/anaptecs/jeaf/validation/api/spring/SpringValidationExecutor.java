@@ -1,8 +1,5 @@
 package com.anaptecs.jeaf.validation.api.spring;
 
-import javax.annotation.PostConstruct;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.anaptecs.jeaf.validation.api.ValidationExecutor;
@@ -27,14 +24,18 @@ public class SpringValidationExecutor {
    * never returns null.
    */
   public static ValidationExecutor getValidationExecutor( ) {
-    return validationExecutor;
+    ValidationExecutor lValidationExecutor;
+    if (validationExecutor != null) {
+      lValidationExecutor = validationExecutor;
+    }
+    else {
+      lValidationExecutor = new ValidationExecutor() {
+      };
+    }
+    return lValidationExecutor;
   }
 
-  @Autowired
-  private ValidationExecutor initValidationExecutor;
-
-  @PostConstruct
-  public void init( ) {
-    validationExecutor = initValidationExecutor;
+  public SpringValidationExecutor( ValidationExecutor pValidationExecutor ) {
+    validationExecutor = pValidationExecutor;
   }
 }
