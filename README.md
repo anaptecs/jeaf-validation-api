@@ -1,8 +1,4 @@
-![Latest Version](https://maven-badges.herokuapp.com/maven-central/com.anaptecs.jeaf.validation/jeaf-validation-api-project/badge.svg)
-![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=jeaf-validation-api-project&metric=security_rating&token=69c191117715ed178b5e73f897a9f8cc61acab65)
-![Technical Debt](https://sonarcloud.io/api/project_badges/measure?project=jeaf-validation-api-project&metric=sqale_index&token=69c191117715ed178b5e73f897a9f8cc61acab65)
-![Coverage](https://sonarcloud.io/api/project_badges/measure?project=jeaf-validation-api-project&metric=coverage&token=69c191117715ed178b5e73f897a9f8cc61acab65)
-![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=jeaf-validation-api-project&metric=code_smells&token=69c191117715ed178b5e73f897a9f8cc61acab65)
+![Maven Central Version](https://img.shields.io/maven-central/v/com.anaptecs.jeaf.validation/jeaf-validation-api-project) ![Apache 2.0 License](https://img.shields.io/github/license/anaptecs/jeaf-validation-api)
 
 
 # JEAF Validation API README #
