@@ -35,14 +35,4 @@ public interface ValidationExecutorReactive {
   default Mono<Void> validateResponse(Class<?> pService, Object pResponseObject) {
     return Mono.empty();
   };
-
-  /**
-   * Method validates the passed object. It is expected that implementations throws a runtime exception that describes
-   * all the validations that failed.
-   *
-   * @param pObject Object that should be validated. The parameter may be null.
-   */
-  default Mono<Void> validateObject(Object pObject) {
-    return Mono.empty();
-  };
 }
