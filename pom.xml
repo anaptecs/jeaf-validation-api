@@ -53,7 +53,7 @@
 
 	<properties>
 		<jeaf.core.api.version>1.8.0</jeaf.core.api.version>
-		<spring.boot.version>4.0.3</spring.boot.version>
+		<spring.boot.version>4.0.4</spring.boot.version>
 		<reactor-bom.version>2025.0.3</reactor-bom.version>
 	</properties>
 
