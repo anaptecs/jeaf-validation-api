@@ -57,7 +57,6 @@
 		<reactor-bom.version>2025.0.3</reactor-bom.version>
 	</properties>
 
-
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
@@ -66,6 +65,14 @@
 				<version>${reactor-bom.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
+			</dependency>
+
+			<dependency>
+			    <groupId>jakarta.platform</groupId>
+			    <artifactId>jakarta.jakartaee-bom</artifactId>
+			    <version>11.0.0</version>
+			    <type>pom</type>
+			    <scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
