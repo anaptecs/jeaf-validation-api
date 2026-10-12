@@ -7,12 +7,23 @@ package com.anaptecs.jeaf.validation.api;
 
 import java.util.List;
 
+import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 
+/**
+ * Class implements a {@link ConstraintValidator} for {@link EnumSubset} constraint.
+ *
+ * @author JEAF Development Team
+ */
 public class EnumSubsetConstraintValidator implements jakarta.validation.ConstraintValidator<EnumSubset, Enum<?>> {
-
+  /**
+   * List with the names of all literals that are explicitly allowed.
+   */
   private List<String> allowedLiterals;
 
+  /**
+   * List with the names of all literals that are explicitly not allowed.
+   */
   private List<String> notAllowedLiterals;
 
   @Override
