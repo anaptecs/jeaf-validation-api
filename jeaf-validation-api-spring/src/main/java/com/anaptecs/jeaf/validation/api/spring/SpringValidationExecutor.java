@@ -37,7 +37,7 @@ public class SpringValidationExecutor {
   /**
    * Operation is intended to be used by Spring during bootstrapping to set configured {@link ValidationExecutor}.
    *
-   * @param pReactiveValidationExecutor Validation executor that is configured for this environment.
+   * @param pValidationExecutor Validation executor that is configured for this environment.
    */
   public SpringValidationExecutor( ValidationExecutor pValidationExecutor ) {
     validationExecutor = pValidationExecutor;
