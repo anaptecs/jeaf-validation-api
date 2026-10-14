@@ -8,6 +8,7 @@ import static java.lang.annotation.ElementType.TYPE_USE;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 import java.lang.annotation.Documented;
+import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
@@ -26,6 +27,7 @@ import jakarta.validation.Payload;
 @Documented
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
 @Retention(RUNTIME)
+@Repeatable(EnumSubsets.class)
 @Constraint(validatedBy = { EnumSubsetConstraintValidator.class })
 public @interface EnumSubset {
   /**

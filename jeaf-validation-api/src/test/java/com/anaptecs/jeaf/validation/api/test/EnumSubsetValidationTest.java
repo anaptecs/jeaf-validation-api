@@ -3,6 +3,7 @@ package com.anaptecs.jeaf.validation.api.test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.List;
 import java.util.Set;
 
 import jakarta.validation.ConstraintViolation;
@@ -31,10 +32,20 @@ public class EnumSubsetValidationTest {
 
     lEnumClass.firstColor = Color.BLUE;
     lEnumClass.secondColor = Color.GREEN;
+    lEnumClass.myColors = List.of(Color.GREEN);
     lViolations = lValidator.validate(lEnumClass);
     assertEquals(1, lViolations.size());
     assertEquals(
         "[ConstraintViolationImpl{interpolatedMessage='enum literal not allowed', propertyPath=secondColor, rootBeanClass=class com.anaptecs.jeaf.validation.api.test.EnumClass, messageTemplate='enum literal not allowed'}]",
+        lViolations.toString());
+
+    lEnumClass.firstColor = Color.BLUE;
+    lEnumClass.secondColor = Color.BLUE;
+    lEnumClass.myColors = List.of(Color.GREEN, Color.WHITE, Color.BLUE);
+    lViolations = lValidator.validate(lEnumClass);
+    assertEquals(1, lViolations.size());
+    assertEquals(
+        "[ConstraintViolationImpl{interpolatedMessage='enum literal not allowed', propertyPath=myColors[1].<list element>, rootBeanClass=class com.anaptecs.jeaf.validation.api.test.EnumClass, messageTemplate='enum literal not allowed'}]",
         lViolations.toString());
   }
 }
