@@ -12,6 +12,7 @@ import java.lang.annotation.Repeatable;
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;
 
+import com.anaptecs.jeaf.validation.api.EnumSubset.List;
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 
@@ -27,7 +28,7 @@ import jakarta.validation.Payload;
 @Documented
 @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
 @Retention(RUNTIME)
-@Repeatable(EnumSubsets.class)
+@Repeatable(List.class)
 @Constraint(validatedBy = { EnumSubsetConstraintValidator.class })
 public @interface EnumSubset {
   /**
@@ -46,4 +47,10 @@ public @interface EnumSubset {
 
   String message() default "enum literal not allowed";
 
+  @Documented
+  @Target({ FIELD, METHOD, PARAMETER, ANNOTATION_TYPE, TYPE_USE })
+  @Retention(RUNTIME)
+  @interface List {
+    EnumSubset[] value();
+  }
 }
