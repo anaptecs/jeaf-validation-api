@@ -40,15 +40,15 @@ import jakarta.validation.Payload;
 @Constraint(validatedBy = { TypeRestrictionValidator.class })
 public @interface TypeRestriction {
   /**
-   * Names of the allowed types.
+   * Allowed types.
    */
-  String[] allowedTypes() default {};
+  Class<?>[] allowedTypes() default {};
 
   /**
-   * Names of the not allowed types. Matching is always based on the exact runtime type of the validated object,
+   * Not allowed types. Matching is always based on the exact runtime type of the validated object,
    * independent of {@link #allowSubtypes()}.
    */
-  String[] notAllowedTypes() default {};
+  Class<?>[] notAllowedTypes() default {};
 
   /**
    * Flag defines if subtypes of the configured {@link #allowedTypes()} should be treated as a match as well. This

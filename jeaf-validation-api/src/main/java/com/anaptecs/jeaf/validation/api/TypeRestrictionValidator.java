@@ -5,7 +5,7 @@
  */
 package com.anaptecs.jeaf.validation.api;
 
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -36,41 +36,27 @@ public class TypeRestrictionValidator implements jakarta.validation.ConstraintVa
 
   @Override
   public void initialize(TypeRestriction pConstraintAnnotation) {
-    String lCurrentClass = "";
-    try {
-      allowSubtypes = pConstraintAnnotation.allowSubtypes();
+    allowSubtypes = pConstraintAnnotation.allowSubtypes();
 
-      // Resolve class objects for allowed types.
-      if (pConstraintAnnotation.allowedTypes().length > 0) {
-        allowedTypes = new ArrayList<Class<?>>(pConstraintAnnotation.allowedTypes().length);
-        for (String lNext : pConstraintAnnotation.allowedTypes()) {
-          lCurrentClass = lNext;
-          allowedTypes.add(Class.forName(lNext));
-        }
-      }
-      else {
-        allowedTypes = Collections.emptyList();
-      }
-
-      // Resolve class objects for not allowed types.
-      if (pConstraintAnnotation.notAllowedTypes().length > 0) {
-        notAllowedTypes = new ArrayList<Class<?>>(pConstraintAnnotation.notAllowedTypes().length);
-        for (String lNext : pConstraintAnnotation.notAllowedTypes()) {
-          lCurrentClass = lNext;
-          notAllowedTypes.add(Class.forName(lNext));
-        }
-      }
-      else {
-        notAllowedTypes = Collections.emptyList();
-      }
-
-      if (allowedTypes.isEmpty() && notAllowedTypes.isEmpty()
-          || !allowedTypes.isEmpty() && !notAllowedTypes.isEmpty()) {
-        throw new IllegalArgumentException("Either 'allowedTypes' or 'notAllowedTypes' must be set");
-      }
+    // Resolve class objects for allowed types.
+    if (pConstraintAnnotation.allowedTypes().length > 0) {
+      allowedTypes = Arrays.asList(pConstraintAnnotation.allowedTypes());
     }
-    catch (ClassNotFoundException e) {
-      throw new IllegalArgumentException("Configured class " + lCurrentClass + " not available in classpath.", e);
+    else {
+      allowedTypes = Collections.emptyList();
+    }
+
+    // Resolve class objects for not allowed types.
+    if (pConstraintAnnotation.notAllowedTypes().length > 0) {
+      notAllowedTypes = Arrays.asList(pConstraintAnnotation.notAllowedTypes());
+    }
+    else {
+      notAllowedTypes = Collections.emptyList();
+    }
+
+    if (allowedTypes.isEmpty() && notAllowedTypes.isEmpty()
+        || !allowedTypes.isEmpty() && !notAllowedTypes.isEmpty()) {
+      throw new IllegalArgumentException("Either 'allowedTypes' or 'notAllowedTypes' must be set");
     }
   }
 
